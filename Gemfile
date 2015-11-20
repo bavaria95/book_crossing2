@@ -12,6 +12,7 @@ source 'https://rubygems.org'
  gem 'simple_form', '~> 3.2'
  gem 'bootstrap-sass', '~> 3.3', '>= 3.3.5.1'
  gem 'paperclip', '~> 4.3', '>= 4.3.2'
+ 
 group :development, :test do
      gem 'byebug'
 end

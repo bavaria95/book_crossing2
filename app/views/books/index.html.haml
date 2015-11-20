@@ -1,2 +1,9 @@
-- @book.each do |book|
-  %h2= link_to book.title, book
+- @book.each_slice(3) do |books|
+  .row
+    - books.each do |book|
+      .col-md-4
+        .book
+          .image_wrapper
+            = link_to book do
+              = image_tag book.image.url(:medium)
+          %h2= link_to book.title, book
