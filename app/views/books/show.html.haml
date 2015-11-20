@@ -1,6 +1,17 @@
-= image_tag @book.image.url(:medium), class: "book_image"
-%h1=@book.title
-%p=@book.author
-=link_to "Back", root_path, class: "btn btn-default"
-=link_to "Edit", edit_book_path, class: "btn btn-default"
-=link_to "Delete", book_path, method: :delete,data: {confirm: "are you sure?"}, class: "btn btn-default"
+.main_content
+  #book_top.row
+    .col-md-4
+      = image_tag @book.image.url(:medium), class: "book_image"
+    .col-md-8
+      #book_info
+        %h1= @book.title
+        %p
+          =@book.description
+          Author:
+          = @book.author
+  .row
+    .col-md-12
+      = link_to "Back", root_path, class: "btn btn-default"
+      - if user_signed_in?
+        = link_to "Edit", edit_book_path, class: "btn btn-default"
+        = link_to "Delete", book_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default"

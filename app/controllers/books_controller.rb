@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
   before_action :find_book, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @book = Book.all.order("created_at DESC")
     
@@ -11,11 +13,12 @@ class BooksController < ApplicationController
   end
 
   def new
-    @book = Book.new
+
+    @book = current_user.books.build
   end
 
   def create
-    @book = Book.new(book_params)
+    @book = current_user.books.build(book_params)
     if @book.save
       redirect_to @book, notice: "Created"
     else
@@ -46,7 +49,7 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.require(:book).permit(:title, :author, :image )
+    params.require(:book).permit(:title, :author, :image, :description )
   end
 
   def find_book
