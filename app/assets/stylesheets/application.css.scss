@@ -90,11 +90,11 @@ body {
   }
 }
 
-#recipe_top {
+#book_top {
   margin-bottom: 50px;
 }
 
-#recipe_info, #ingredients, #directions {
+#book_info, #ingredients, #directions {
   background: white;
   @include box-shadow;
   min-height: 360px;
@@ -102,13 +102,13 @@ body {
   padding: 2em 8%;
 }
 
-.recipe_image {
+.book_image {
   max-width: 100%;
   border-radius: 5px;
   @include box-shadow;
 }
 
-#recipe_info {
+#book_info {
   h1 {
     font-size: 36px;
     font-weight: normal;
