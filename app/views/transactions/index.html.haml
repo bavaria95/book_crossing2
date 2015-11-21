@@ -4,8 +4,7 @@
     .col-md-3
       .book
         .image_wrapper
-          = link_to reqs do
-            = image_tag Book.find(reqs.requested_book_id).image.url(:medium)
+          = image_tag Book.find(reqs.requested_book_id).image.url(:medium)
         %h2= link_to Book.find(reqs.requested_book_id).title, reqs
     .col-md-9
       #book_info

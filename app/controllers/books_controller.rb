@@ -3,12 +3,22 @@ class BooksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @book = Book.all.order("created_at DESC")
-    
+    if user_signed_in?
+      @book = Book.where.not(user_id:current_user.id).order("created_at DESC")
+      @book.each { |b| if User.find(b.user_id).city=current_user.city
+        b.destroy
+      end  }
+    else
+      render 'about'
+    end
   end
 
   def show
    
+  end
+
+  def about
+    
   end
 
   def new
