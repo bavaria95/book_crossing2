@@ -16,4 +16,4 @@
         = link_to "Edit", edit_book_path, class: "btn btn-default"
         = link_to "Delete", book_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default"
         - if @book.user_id != current_user.id
-          = link_to "Request", new_transaction_path(requested_book_id: @book.id, user_id: current_user.id), class: "btn btn-default" if Transaction.where(requested_book_id: @book.id).nill?
+          = link_to "Request", new_transaction_path(requested_book_id: @book.id, user_id: current_user.id), class: "btn btn-default" if Transaction.where(requested_book_id: @book.id).nil?
