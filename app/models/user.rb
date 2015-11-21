@@ -1,17 +1,6 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+         :recoverable, :rememberable, :trackable, :validatable
 
   has_many :books
-  def self.from_omniauth(auth)
-      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-        user.provider = auth.provider
-        user.uid = auth.uid
-        user.email = auth.info.email
-        user.name = auth.info.first_name
-        user.surname = auth.info.last_name
-        user.city = auth.info.location.city
-        user.password = Devise.friendly_token[0,20]
-      end
-  end
 end
