@@ -27,7 +27,7 @@ class TransactionsController < ApplicationController
 	    @transaction.save
 
 	    redirect_to transactions_path
-	  end
+	end
 
 	  def show
 	  end
