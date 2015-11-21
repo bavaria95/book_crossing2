@@ -29,13 +29,27 @@ class TransactionsController < ApplicationController
 	    redirect_to transactions_path
 	end
 
-	  def show
-	  end
+	# let it mean accepting request
+	def update
+		@transaction.status_requested = true
+		@transaction.requester_book_id = params['requester_book_id'].to_i
+		@transaction.save
 
+		redirect_to transactions_path
+	end
 
-	  def edit
-	  end
+	# let it mean rejecting request
+	def edit
+		@transaction.destroy
+		
+		redirect_to transactions_path
+	end
 
+	def destroy
+		@transaction.destroy
+
+		redirect_to transactions_path
+	end
 
 	private
 	    # Use callbacks to share common setup or constraints between actions.
