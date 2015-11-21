@@ -14,6 +14,7 @@ source 'https://rubygems.org'
  gem 'paperclip', '~> 4.3', '>= 4.3.2'
  gem 'devise', '3.4.0'
  gem 'omniauth-facebook', '~> 3.0'
+ gem 'fb_graph2'
  
 group :development, :test do
      gem 'byebug'
