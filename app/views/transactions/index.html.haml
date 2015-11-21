@@ -7,7 +7,7 @@
           = image_tag Book.find(reqs.requested_book_id).image.url(:medium)
         %h2= Book.find(reqs.requested_book_id).title
     .col-md-9
-      #book_info
+      #transaction_info
         %p=link_to 'Cancel', reqs, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default" unless reqs.status_requested
         -if reqs.status_requested
           %p #{Book.find(reqs.requested_book_id).user.name} accepted your request. He wants #{Book.find(reqs.requester_book_id).title} Here is his email : #{mail_to Book.find(reqs.requested_book_id).user.email}
@@ -23,13 +23,14 @@
           = image_tag Book.find(reqs.requested_book_id).image.url(:medium)
         %h2= Book.find(reqs.requested_book_id).title
     .col-md-9
-      #book_info
+      #transaction_info
         -@r_books = Book.where(user_id: reqs.user_id) 
         -@r_books_titles = [] 
         -@r_books.each  { |book| @r_books_titles<<[book.title, book.id]}
         -if reqs.status_requested.nil? 
           = simple_form_for(reqs, {:class => "form-inline"}) do |f|
             = select_tag(:requester_book_id, options_for_select(@r_books_titles),class: "form-control dropdown-toggle")
+            <br>
 
             = f.submit "Accept",class: "btn btn-default"
             = link_to "Reject", edit_transaction_path(reqs), class: "btn btn-default"
