@@ -14,7 +14,7 @@
     	<%fx = File.readlines(Rails.root + 'public/cities.dat') %>
     	<%@cities = []%>
     	<%fx.each { |e| @cities<<e.strip  } %>
-    	<%= f.select :city, @cities%>
+    	<%= f.input :city,required: true, :collection => @cities,input_html: {class: "form-control dropdown-toggle"}  %> 
       </div>
         
 

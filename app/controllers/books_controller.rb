@@ -8,8 +8,7 @@ class BooksController < ApplicationController
   end
 
   def show
-
-    
+   
   end
 
   def new
@@ -54,5 +53,8 @@ class BooksController < ApplicationController
 
   def find_book
     @book = Book.find(params[:id])
+    rescue ActiveRecord::RecordNotFound  
+      redirect_to :controller => "books", :action => "index"
+    return
   end
 end
