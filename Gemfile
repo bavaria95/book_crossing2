@@ -15,6 +15,8 @@ source 'https://rubygems.org'
  gem 'devise', '3.4.0'
  gem "unicorn-rails"
  gem "rack-handlers"
+ gem 'execjs'
+ gem 'therubyracer', :platforms => :ruby
 
  
 group :development, :test do
