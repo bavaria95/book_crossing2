@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  requested_book_id: 1
+  requester_book_id: 1
+  status_requested: false
+  status_requester: false
+
+two:
+  user_id: 1
+  requested_book_id: 1
+  requester_book_id: 1
+  status_requested: false
+  status_requester: false
