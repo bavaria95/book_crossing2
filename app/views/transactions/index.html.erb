@@ -1,0 +1,36 @@
+<h1>My Transactions</h1>
+<table style="width=100%" border="2">
+<tr>
+	<td>book title</td>
+	<td>requester email</td>
+	<td>requested email</td>
+</tr>
+<% @my_transactions.each do |t| %>
+	<tr>
+		<td><%= Book.find(t.requested_book_id).title %></td>
+		<td><%= User.find(t.user_id).email %></td>
+		<td><%= Book.find(t.requested_book_id).user.email %></td>
+	</tr>
+<% end %>
+
+</table>
+
+
+
+
+<h1>Transactions to me</h1>
+<table style="width=100%" border="2">
+<tr>
+	<td>book title</td>
+	<td>requester email</td>
+	<td>requested email</td>
+</tr>
+<% @transactions_to_me.each do |t| %>
+	<tr>
+		<td><%= Book.find(t.requested_book_id).title %></td>
+		<td><%= User.find(t.user_id).email %></td>
+		<td><%= Book.find(t.requested_book_id).user.email %></td>
+	</tr>
+<% end %>
+
+</table>

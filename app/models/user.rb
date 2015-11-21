@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :books
+<<<<<<< HEAD
   def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.provider = auth.provider
@@ -14,3 +15,7 @@ class User < ActiveRecord::Base
       end
   end
 end
+=======
+  # has_many :transactions
+end
+>>>>>>> 47b710fd3079cab2394519b1f2929ed0dd85883b
