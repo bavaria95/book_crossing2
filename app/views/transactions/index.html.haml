@@ -1,0 +1,40 @@
+%h1 My transactions
+- @my_transactions.each do |reqs|
+  .row
+    .col-md-3
+      .book
+        .image_wrapper
+          = link_to reqs do
+            = image_tag Book.find(reqs.requested_book_id).image.url(:medium)
+        %h2= link_to Book.find(reqs.requested_book_id).title, reqs
+    .col-md-9
+      #book_info
+        %p=link_to 'Cancel', reqs, method: :delete, data: { confirm: 'Are you sure?' } unless reqs.status_requested
+        -if reqs.status_requested
+          %p #{Book.find(reqs.requested_book_id).user.name} accepted your request. He wants #{Book.find(reqs.requester_book_id).title} Here is his email : #{mail_to Book.find(reqs.requested_book_id).user.email}
+
+
+            
+%h1 Transactions to me
+- @transactions_to_me.each do |reqs|
+  .row
+    .col-md-3
+      .book
+        .image_wrapper
+          = link_to reqs do
+            = image_tag Book.find(reqs.requested_book_id).image.url(:medium)
+        %h2= link_to Book.find(reqs.requested_book_id).title, reqs
+    .col-md-9
+      #book_info
+        -@r_books = Book.where(user_id: reqs.user_id) 
+        -@r_books_titles = [] 
+        -@r_books.each  { |book| @r_books_titles<<[book.title, book.id]}
+        -if reqs.status_requested.nil? 
+          = simple_form_for(reqs, {:class => "form-inline"}) do |f|
+            = select_tag(:requester_book_id, options_for_select(@r_books_titles),input_html: {class: "form-control dropdown-toggle"})
+
+            = f.submit "Accept"
+            = link_to "Reject", edit_transaction_path(reqs)
+
+
+
