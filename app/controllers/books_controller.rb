@@ -8,7 +8,7 @@ class BooksController < ApplicationController
       @book.each { |b| if User.find(b.user_id).city=current_user.city
         b.destroy
       end  }
-    else
+    else 
       render 'about'
     end
   end
