@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
         user.email = auth.info.email
         user.name = auth.info.first_name
         user.surname = auth.info.last_name
+        user.city = auth.info.location.city
         user.password = Devise.friendly_token[0,20]
       end
   end
