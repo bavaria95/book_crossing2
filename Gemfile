@@ -13,6 +13,7 @@ source 'https://rubygems.org'
  gem 'bootstrap-sass', '~> 3.3', '>= 3.3.5.1'
  gem 'paperclip', '~> 4.3', '>= 4.3.2'
  gem 'devise', '3.4.0'
+ gem 'omniauth-facebook', '~> 3.0'
  
 group :development, :test do
      gem 'byebug'

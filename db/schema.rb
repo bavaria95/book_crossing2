@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120202949) do
+ActiveRecord::Schema.define(version: 20151121015403) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20151120202949) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["city"], name: "index_users_on_city"
